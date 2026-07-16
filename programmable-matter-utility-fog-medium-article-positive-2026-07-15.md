@@ -238,7 +238,23 @@ That is a strictly better result than the one it replaces. "Physics forbids it" 
 
 ### F5. What survives
 
-Two of the three walls stand, and biology *confirms* them rather than breaking them. The **communication-energy wall** is real (one bit ≈ 100,000 CPU-ops) — and notably, cells don't beat it either; they whisper to neighbours by diffusion and gap junctions, with **no addressing and no broadcast**. The **NP-complete reconfiguration-planning wall** stands too — and biology's answer is instructive: it never solves the problem. Morphogenesis doesn't compute an optimal path; it runs local rules until a shape falls out.
+Having been burned once, I ran the same kill-test on the next wall I'd asserted — the **communication-energy wall** ("one bit ≈ 100,000 CPU-ops, so vast swarms choke on coordination cost"). **It failed too, and for the identical reason: a smuggled assumption reported as a law.**
+
+The claim only bites if comms cost *grows with swarm size*. Whether it does is a choice of **topology**, not physics:
+
+- **Broadcast-to-all:** cost per unit ∝ N. Genuinely unaffordable at 10⁹. *This is a real wall — for this topology.*
+- **Gossip / global consensus:** ∝ log N. Soft.
+- **Local, neighbours-only:** ∝ k, a constant. **Completely independent of N** — 10 units or 10¹², same cost per unit.
+
+Kilobot uses the third at 1,024 units. Your body uses it at 3.6×10¹³ — which settles it: if a comms-energy wall forbade vast coordination, *you* would be impossible.
+
+And the number that actually matters isn't about swarm size at all. A **radio** bit costs ~**10¹²×** a biological message (a diffusing molecule ≈ one ATP ≈ 20 kT). Run that against harvested power and a sunlight-powered unit can afford local comms down to about **154 µm — with a radio.** At biological messaging cost, the formal answer comes out sub-atomic, which just means: *comms is never the binding constraint at any buildable size.*
+
+> **Corrected again:** the "coordination wall" is **the radio's floor, not the swarm's.** It's a property of one messaging technology we happened to choose. (Suggestively, that 154 µm figure lands in the same decade as the smallest real autonomous robots, ~200 µm.)
+
+What genuinely survives is a **design rule with a cost**: go neighbour-only and drop the radio — and accept what biology accepts in exchange, **no addressing and no broadcast.** You cannot unicast to cell #4,000,000,001. You can only bathe the swarm in a field and let local rules do the rest.
+
+The **NP-complete reconfiguration-planning wall** stands — and biology's answer is instructive: it never solves the problem. Morphogenesis doesn't compute an optimal path; it runs local rules until a shape falls out. But note the price of that trick: biology only reaches **evolved** shapes, not arbitrary ones.
 
 And biology reveals the gate I under-weighted all along: **open air**. Every biological reconfiguration mechanism — diffusion, chemotaxis, ion flux — presupposes liquid water. The air-tolerant state (a spore) and the reconfigurable state are **disjoint**: spores survive dry, but spores don't compute or move. Of all the barriers in this article, that one now looks the most fundamental — and it's the one I spent the least time on.
 
@@ -249,7 +265,7 @@ Put it all together and you can actually *write the requirements* for the thing 
 - **Unit size:** ~10–100 µm. *Needs:* **nothing from physics** — a bacterium a tenth that size already powers itself on sunlight with 100× margin (Part F). What it needs is our demand to scale down with it.
 - **Autonomy:** onboard power + a few bits of logic + neighbour comms. *Needs:* **energy per useful operation cut by orders of magnitude.** Not per switch — we're already at ATP parity there — but per *instruction*: stop spending thousands of switches on what a molecular machine does in one chemical event.
 - **Actuation:** *Needs:* **transduction efficiency.** Today's sub-mm robots burn their budget on ~10⁻⁴-efficient actuators; F1-ATPase runs near 100%. This is the single largest and most neglected gap in the whole spec — four orders of magnitude, sitting in plain sight.
-- **Count:** 10⁹–10¹². *Needs:* the communication-energy wall beaten — energy-proportional, mostly-silent, neighbour-only coordination. (Biology agrees: it whispers by diffusion, and it has no addressing either.)
+- **Count:** 10⁹–10¹². *Needs:* **nothing from physics here either** — local neighbour-only coordination is N-independent (Part F5). What it needs is a **messaging layer cheaper than radio**: a radio bit costs ~10¹²× a diffusing molecule, and *that* — not swarm size — sets a ~154 µm floor. Price of admission: no addressing, no broadcast.
 - **Reconfiguration:** arbitrary 3D shapes on command. *Needs:* distributed approximation — biology's hint is that you **never solve the NP-complete problem**; you run local rules until a shape falls out. But note biology only reaches *evolved* shapes, not arbitrary ones — "arbitrary" may be harder than "tiny" ever was.
 - **Open air:** *Needs:* the one I under-rated. Every biological reconfiguration mechanism requires liquid water, and life's air-tolerant state doesn't move or compute. **This now looks like the deepest barrier of the five.**
 
@@ -259,7 +275,7 @@ Notice what that spec *is*: not a fantasy, and — after the correction — not 
 
 *Methodology note: the scores are the author's judgments on a deliberately utility-fog-faithful rubric; the weights are adjustable, and the ranking shifts with the target application — that's discovery #1, by design. The power-scaling figures in Part F are an order-of-magnitude illustration built on the primary ∝ L² surface-power relationship; the per-technology numbers are anchored to the primary sources below.*
 
-*Correction (2026-07-16): this article originally claimed that onboard autonomy is physically impossible below ~1 mm because harvested power scales as L². **That claim was wrong and has been retracted** — supply scales as L² but demand scales as L³, so the ratio improves as units shrink, and* Prochlorococcus *(0.6 µm, sunlight-powered, ~123× power margin) is a working counterexample. Part F now carries the original argument, the kill-test that destroyed it, and the corrected claim. The falsification is reproducible:* `scripts/biology_wall_falsification.py`. *Figure 2 has been redrawn; Figure 3 is unchanged but relabelled — it was always correct for engineered machines, and only the fixed-demand assumption was wrong. I've left the reversal visible rather than editing it away, because being publicly wrong in a checkable way is the whole point of writing the numbers down.*
+*Correction (2026-07-16): this article originally claimed that onboard autonomy is physically impossible below ~1 mm because harvested power scales as L². **That claim was wrong and has been retracted** — supply scales as L² but demand scales as L³, so the ratio improves as units shrink, and* Prochlorococcus *(0.6 µm, sunlight-powered, ~123× power margin) is a working counterexample. Part F now carries the original argument, the kill-test that destroyed it, and the corrected claim. The falsification is reproducible:* `scripts/biology_wall_falsification.py`. A second kill-test (`scripts/comms_energy_wall.py`) subsequently overturned the **communication-energy wall** in Part F5 by the same mechanism — a smuggled topology assumption (global/radio comms) reported as a law; local neighbour-only coordination is N-independent, and the real constraint is the radio's ~10¹²× cost per bit versus a diffusing molecule. Figure 2 has been redrawn; Figure 3 is unchanged but relabelled — it was always correct for engineered machines, and only the fixed-demand assumption was wrong. I've left the reversal visible rather than editing it away, because being publicly wrong in a checkable way is the whole point of writing the numbers down.*
 
 ### Sources
 - Rothemund — *Folding DNA to create nanoscale shapes and patterns*, **Nature 440:297 (2006)** (scaffolded origami; M13 scaffold).
@@ -283,7 +299,7 @@ Notice what that spec *is*: not a fantasy, and — after the correction — not 
 - ***Prochlorococcus*** — **MMBR 1999** (0.6 µm obligate photoautotroph, smallest photosynthetic organism) + **PLOS One** diel photophysiology (8.8 fg C/cell/hr).
 - **Phoenix processor** — Hanson et al., **JSSC 44(4) 2009** / VLSI 2008 (Blaauw & Sylvester): 226–297 nW active, 30–35 pW sleep, 2.8 pJ/cycle.
 - Landauer limit measured to within 44% of kT ln2 — **Science Advances 2016**. Kinesin: 1 ATP per 8-nm step (Schnitzer & Block, **Nature 1997**). F1-ATPase near-100% efficiency.
-- Scripts (reproducible): `scripts/power_scaling_wall.py` (the original L² illustration) · **`scripts/biology_wall_falsification.py` (the kill-test that overturned it)**.
+- Scripts (reproducible): `scripts/power_scaling_wall.py` (the original L² illustration) · **`scripts/biology_wall_falsification.py`** (the kill-test that overturned it) · **`scripts/comms_energy_wall.py`** (the kill-test that overturned the coordination wall too).
 
 ---
 
