@@ -1,5 +1,7 @@
 # Programmable Matter vs. the Utility-Fog Dream
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A scored engineering comparison of the **seven real "programmable matter" technology families** against the classic *utility fog* vision (J. Storrs Hall, 1993) — and the scaling law that explains why none has closed the gap yet.
 
 ## The headline
@@ -37,5 +39,4 @@ Scores are the author's analyst judgments on a deliberately utility-fog-faithful
 
 ## License
 
-- Code (`scripts/`): MIT.
-- Prose & figures (articles, `article-figures/`, `research/`): © 2026 Farshad, released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+Released under the [MIT License](LICENSE) — © 2026 Farshad Ebrahimi. Use it, remix it, cite it.
