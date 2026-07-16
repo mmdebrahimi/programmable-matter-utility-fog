@@ -83,18 +83,21 @@ So what *would* it take to build the original dream — fog that's tiny *and* va
 
 Here's the elegant part. When you plot every technology by two axes — how *small* each unit is, and how much *autonomy* (its own power and brain) each unit carries — a clear picture appears.
 
-![Figure 2 — Autonomy vs. unit size, showing the open frontier where utility fog would live.](article-figures/fig2-autonomy-vs-size-wall.svg)
-*Figure 2. Map every technology by size and onboard autonomy, and one corner — tiny **and** self-powered — is the open frontier. It has a name and a cause, which is exactly why it's a solvable target.*
+![Figure 2 — Autonomy vs. unit size. The "forbidden" corner is occupied by Prochlorococcus; the limit binds engineered units only.](article-figures/fig2-autonomy-vs-size-wall.svg)
+*Figure 2. Map every technology by size and onboard autonomy and one corner — tiny **and** self-powered — looks empty. It isn't: a 0.6 µm photosynthetic bacterium lives there in astronomical numbers. The dashed limit binds **CMOS-and-actuator** machines, not matter. (Corrected 2026-07-16; the earlier version of this figure labelled that corner physically forbidden.)*
 
-The reason that corner is still open is beautifully simple physics: **a device powers itself from its surface, and surface area shrinks as the square of size (∝ L²).** So the smaller a unit gets, the less room it has to carry its own battery and brain. Above about a millimeter, a robot can be fully autonomous (that's the Kilobot). Below it, today's tiny machines borrow their power and steering from outside — magnetic or acoustic fields — which is *why microscopic swarms are so nimble in the first place.*
+I originally thought the reason that corner was empty was beautifully simple physics: a device powers itself from its surface, surface area shrinks as the square of size (∝ L²), so below about a millimetre there isn't enough surface to power a brain. It's a tidy story. **I tried to kill it, and it died.** (The autopsy is Part F — I've left the reversal in view rather than quietly editing it out, because the corrected answer is far more useful than the tidy one.)
 
-Read that again, because it's the good news hiding inside the "hard" news: **the frontier isn't vague. It's a single, named, physical target.** "Get real autonomy below a millimeter." And there are already credible attack routes on it:
+The corner isn't empty. **Life is already sitting in it.** *Prochlorococcus* is a **0.6 µm** bacterium — more than a thousand times smaller than my supposed wall — that powers itself entirely on sunlight caught by its own surface, with about **123× more power than it needs**, and it is the most abundant photosynthetic organism on Earth. The L² law is real, but it's an *ally* of small things, not an obstacle: supply falls as L² while a cell's demand falls as L³, so **shrinking makes the power budget easier**.
 
-- **Harvest power instead of storing it** — microscopic robots the size of a grain of salt already run on light-harvested electricity (~100 nanowatts) with real logic onboard (Cornell/Michigan). Push that further and the L² wall moves.
+Read that again, because it's better news than the version I got wrong: **the frontier isn't physics. It's engineering, and it has a name.** The reason *our* machines can't do what a bacterium does is that **our demand doesn't shrink when our robots do** — CMOS spends ~10⁷ ATP-equivalents on a single instruction, and our actuators waste 99.99% of what they're given. Both are addressable:
+
+- **Spend less per operation** — per *transistor switch*, our electronics are already at parity with the ATP molecule biology runs on. We lose at the *instruction* level, burning thousands of switches where a molecular motor spends one chemical event. Close that gap and the "wall" evaporates.
+- **Actuate like a motor protein** — the sub-millimetre robots we *do* have spend their power budget on actuators, not thinking: the transduction chain runs at ~10⁻⁴ efficiency, while the F1-ATPase rotary motor in your cells runs near **100%**. That's four orders of magnitude of headroom sitting in plain sight.
 - **Beam power in** — treat "external field control" not as cheating but as *wireless power*, and the autonomy line blurs.
 - **Let the units be dumber but the swarm smarter** — modern swarm algorithms compile global shapes from trivially simple parts. Maybe individual genius isn't required.
 
-None of these is science fiction; each is an active research program. The utility-fog dream isn't *disproven* — it's been **localized to one crisp engineering question with several live answers.** That's the most exciting place a field can be.
+None of these is science fiction; each is an active research program. The utility-fog dream isn't *disproven* — it's been **localized to a handful of crisp engineering questions with live answers.** That's the most exciting place a field can be — and it's a much better place than where my first, wrong answer put it.
 
 ---
 
@@ -102,7 +105,9 @@ None of these is science fiction; each is an active research program. The utilit
 
 Programmable matter is one of those quiet revolutions that happened while we weren't looking. We can build with DNA by the trillion. We can make robots that assemble themselves. We can sculpt objects out of thin air with sound, and print things that reshape themselves after they're printed. **Every one of those is a working superpower, and together they cover almost the entire original dream.**
 
-The last piece — tiny, autonomous, and everywhere at once — waits behind a single, well-understood wall. And walls with names and causes are the kind engineers knock down. If I had to bet on where the next jaw-dropping headline in this field comes from, it's from someone who figures out how to give a speck of dust its own power and its own mind.
+The last piece — tiny, autonomous, and everywhere at once — is the one I was sure physics forbade. It doesn't. A bacterium too small to see does it in every drop of seawater on Earth, with power to spare. What stands between us and the fog isn't a law; it's the fact that our chips and our motors are still profligate compared to a molecular machine — and those are the kind of walls engineers knock down.
+
+If I had to bet on where the next jaw-dropping headline in this field comes from, it's from someone who stops asking how to give a speck of dust more power, and starts asking how to make it need less.
 
 When they do, the fog rolls in.
 
@@ -164,9 +169,13 @@ Two gorgeous offshoots. Move *one* bead fast enough and persistence-of-vision tu
 
 **Smart dust** is the sensing end. The **Michigan Micro Mote** packs a full computer — processor, memory, radio, solar — into ~**1 mm³**. It's a triumph of integration, but it *senses*; it doesn't reconfigure matter. Its deepest contribution to this whole story is a number: **transmitting one bit off-chip costs roughly the energy of 100,000 CPU operations** (Prabal Dutta). Scale that to 10⁹–10¹² coordinating units and the binding constraint isn't mechanics — it's the **communication-energy budget.** Talking is the expensive part.
 
-## F. The wall, quantified: why autonomy dies below a millimeter
+## F. The wall, quantified — then falsified
 
-Now the crux, with numbers. A self-powered device **harvests energy through its surface**, and surface area scales as the **square of size (∝ L²)**. But the minimum power a functional node needs — a microcontroller awake, a radio duty-cycled, an actuator twitching — **does not shrink with size.** So shrink the unit and, at some point, the harvest falls below the floor. Here's the arithmetic (illustrative order-of-magnitude, using ~15 mW/cm² of usable photovoltaic power in bright sun; the ∝ L² relation is from *Science Robotics* 2024):
+**This section originally concluded that autonomy is physically impossible below ~1 mm. That conclusion was wrong.** I'm keeping the original argument here and then killing it in front of you, because *how* it failed is the most useful thing in this article — and because an argument this tidy deserves an autopsy rather than a quiet edit.
+
+### F1. The original argument
+
+A self-powered device **harvests energy through its surface**, and surface area scales as the **square of size (∝ L²)**. But the minimum power a functional node needs — a microcontroller awake, a radio duty-cycled, an actuator twitching — **does not shrink with size.** So shrink the unit and, at some point, the harvest falls below the floor. Here's the arithmetic (illustrative order-of-magnitude, using ~15 mW/cm² of usable photovoltaic power in bright sun; the ∝ L² relation is from *Science Robotics* 2024):
 
 - **1 cm** unit → ~**15 mW** harvested (sunlight). Plenty. Full autonomy — this is the Kilobot's world.
 - **1 mm** → ~**150 µW.** Getting tight for anything with a motor and a radio.
@@ -176,29 +185,81 @@ Now the crux, with numbers. A self-powered device **harvests energy through its 
 Cross those against real device floors and the wall has a location. An **active node** (~1 mW, motor + radio) can't self-power below **~2.6 mm even in full sun** — indoors it's centimeters. A frugal **~10 µW** node reaches **~0.26 mm**. Only by driving the floor to the **~100 nW** of extreme sub-threshold electronics — exactly what Cornell/Michigan's ~200-µm robots do — does autonomy reach **tens of microns**, and only in bright light. (Reassuringly, that 200-µm real robot sits comfortably above the ~26-µm crossover my numbers predict for a 100-nW floor — the model agrees with the working hardware.)
 
 ![Figure 3 — Harvested power vs unit size (log-log), with the functional-power floors and where the L² line drops below them.](article-figures/fig3-power-scaling.svg)
-*Figure 3. The wall, drawn. Harvested power (black, ∝ L²) plunges 100× per 10× shrink; each dashed line is a device's minimum power. Where the curve crosses a floor is the smallest size that class of machine can still run on. The Kilobot lives high and safe; a 200-µm robot survives only by hugging the lowest (sub-threshold) floor in bright light — and below that, autonomy runs out of surface to power itself.*
+*Figure 3. The wall as originally drawn — and it is **still correct, for engineered machines**. Harvested power (black, ∝ L²) plunges 100× per 10× shrink; each dashed line is a device class's minimum power. The Kilobot lives high and safe; a 200-µm robot survives only by hugging the sub-threshold floor in bright light. The error was never this curve. It was the **dashed lines** — assuming a machine's demand stays fixed as it shrinks.*
 
-*That* is why every sub-millimeter machine in Part E borrows its power and steering from outside. It isn't a design preference; it's the L² surface-power wall. And it's why the technology families split so cleanly — **autonomy is a luxury only big units can afford.**
+Every sub-millimetre machine in Part E does borrow its power and steering from outside, and this argument seemed to explain why. **Autonomy is a luxury only big units can afford.** Tidy. Quotable. Wrong.
 
-There are two more walls stacked behind it, both already met above: the **communication-energy wall** (one bit ≈ 100,000 CPU-ops, so vast swarms choke on coordination cost) and the **NP-complete reconfiguration-planning wall** (sequencing the moves of a million modules is computationally intractable). Utility fog has to beat all three at once.
+### F2. The kill-test: biology
 
-The genuinely hopeful part: **each wall names its own breakthrough.** Beat the power wall by *harvesting more aggressively, beaming power in* (treat "external field" as wireless power, not cheating), or *lowering the electronics floor* below 100 nW. Beat the comms wall with *ultra-sparse, energy-proportional local protocols* (the Kilobot's neighbors-only whisper is a hint). Beat the planning wall with *distributed, approximate, self-stabilizing algorithms* that never compute the global optimum because they don't need to. None of these is fantasy; all three are live research fronts.
+Any claim of the form *"X is physically impossible"* has an obvious failure mode: something might already be doing X. So I looked for the counterexample, and it wasn't hard to find. **Cells.** Roughly 3.6×10¹³ of them in your body right now — micrometre-scale, self-powered, self-repairing, and collectively capable of building an entire organism from one starting unit. That is, on its face, exactly the combination I'd just declared forbidden.
+
+So which is it? Here's the test, and it's brutally simple. Hold the same sunlight number I used above (15 mW/cm² — no goalpost-moving) and ask how the **supply-to-demand ratio** moves as a unit shrinks — for a *cell*, whose demand scales with its volume:
+
+- **1 cm** → supply 11.8 mW vs demand 524 mW → **0.02×** (starves)
+- **1 mm** → 118 µW vs 524 µW → **0.23×** (starves)
+- **100 µm** → 1.18 µW vs 524 nW → **2.3×** ✅
+- **10 µm** → 11.8 nW vs 524 pW → **22×** ✅
+- **1 µm** → 118 pW vs 524 fW → **225×** ✅
+- **0.6 µm** → 42 pW vs 113 fW → **375×** ✅
+
+The ratio doesn't collapse as things shrink. **It improves — monotonically, without bound.** And the reason is embarrassingly simple: supply scales as L², but a cell's demand scales as **L³**. So supply/demand ∝ **1/L**. *The smaller you get, the easier the power budget becomes.*
+
+The L² law is real. I just had it pointing the wrong way. **It is a small-scale *advantage*, not a small-scale barrier** — for anything whose demand scales with its volume.
+
+There's a tell in that table I didn't plant: at **1 cm and 1 mm, the cell starves.** That's not a bug — it's the model independently reproducing a known biological fact it was never fitted to. Surface area *does* eventually strangle a cell's metabolism — but as it grows **bigger**, never smaller. That's textbook microbial scaling (DeLong et al., *PNAS* 2010). When a model you built to test one thing spontaneously reproduces a fact from a field you weren't looking at, you should take its other answer seriously.
+
+### F3. The existence proof
+
+Meet ***Prochlorococcus***: **0.6 µm** across — about **1,700× smaller** than my supposed wall — an **obligate photoautotroph**, meaning it runs on *nothing but sunlight caught by its own surface*. No fuel bath, no beamed power, no cheating.
+
+- Light intercepted at its preferred brightness: **12.3 pW**
+- Power it actually banks: **~0.1 pW**
+- **Margin: ~123×** (and ~424× in full sun — it's actually *photoinhibited* by too much light)
+
+That implied ~1% photosynthetic efficiency lands exactly in the textbook 1–2% range, so the numbers close on themselves. And this is not some exotic extremophile clinging to a niche: *Prochlorococcus* is **the most abundant photosynthetic organism on Earth**, with something like 10²⁷ individuals in the oceans. Tiny, autonomous, surface-powered, and vast — all four at once, three orders of magnitude inside the "forbidden" zone, at planetary scale, for about two billion years.
+
+The claim isn't marginally wrong. It's **inverted**.
+
+### F4. So where is the real wall?
+
+Here's what makes the correction worth more than the original. Biology doesn't beat the L² law — **it makes its demand fall faster than its supply.** We don't. Compare:
+
+- **E. coli, whole living cell** (1 µm³, ~10⁷ ATP/s): **1 pW**
+- **Best CMOS microcontroller, active** (Phoenix, Michigan): **230 nW** — **230,000× a whole cell**
+- **Best CMOS microcontroller, asleep** (pure leakage): 30 pW — still 30× a living cell
+
+And now the genuinely surprising number. Per **transistor switch**, CMOS costs ~3×10⁻²⁰–10⁻¹⁸ J — while ATP hydrolysis, biology's universal energy quantum, is **8.3×10⁻²⁰ J (~20 kT)**. Those are *the same*. **We are already at parity with life at the switch level.** Biology is not closer to the Landauer limit than we are.
+
+We lose at the level of the **operation**. One CMOS instruction costs ~2.8 pJ — thousands of switches plus wire capacitance — roughly **10⁷ ATP-equivalents** to do what a kinesin motor does in **one chemical event**. And it gets worse in the muscles: teardown of the Cornell sub-millimetre robots shows their budget is dominated by **actuators, not logic** (the paper literally uses separate solar cells for legs and brain), with a transduction chain running at ~**10⁻⁴** efficiency — against F1-ATPase's near-**100%**.
+
+> **The corrected claim:** *Sub-millimetre autonomy is not forbidden by physics. It is forbidden to CMOS with bad actuators. The wall isn't size versus autonomy — it's that **our** demand doesn't shrink when our robots do.*
+
+That is a strictly better result than the one it replaces. "Physics forbids it" is a eulogy. "Our instructions cost 10⁷ ATP and our motors waste 99.99%" is a **work order**.
+
+### F5. What survives
+
+Two of the three walls stand, and biology *confirms* them rather than breaking them. The **communication-energy wall** is real (one bit ≈ 100,000 CPU-ops) — and notably, cells don't beat it either; they whisper to neighbours by diffusion and gap junctions, with **no addressing and no broadcast**. The **NP-complete reconfiguration-planning wall** stands too — and biology's answer is instructive: it never solves the problem. Morphogenesis doesn't compute an optimal path; it runs local rules until a shape falls out.
+
+And biology reveals the gate I under-weighted all along: **open air**. Every biological reconfiguration mechanism — diffusion, chemotaxis, ion flux — presupposes liquid water. The air-tolerant state (a spore) and the reconfigurable state are **disjoint**: spores survive dry, but spores don't compute or move. Of all the barriers in this article, that one now looks the most fundamental — and it's the one I spent the least time on.
 
 ## G. A spec sheet for a real foglet
 
 Put it all together and you can actually *write the requirements* for the thing we were promised — which is the most useful thing a "why it doesn't exist yet" analysis can produce:
 
-- **Unit size:** ~10–100 µm (small enough to be "fog," big enough to hold electronics). *Needs:* the sub-100-nW electronics floor + aggressive harvesting or beamed power.
-- **Autonomy:** onboard power + a few bits of logic + neighbor comms. *Needs:* the power wall beaten (Part F).
-- **Count:** 10⁹–10¹². *Needs:* the communication-energy wall beaten — energy-proportional, mostly-silent coordination.
-- **Actuation:** reversible bonding + motion in open air. *Needs:* either a novel onboard micro-actuator or an accepted hybrid where ambient fields supply the muscle while onboard logic supplies the decisions.
-- **Reconfiguration:** arbitrary 3D shapes on command. *Needs:* the NP-complete planning wall beaten by distributed approximation.
+- **Unit size:** ~10–100 µm. *Needs:* **nothing from physics** — a bacterium a tenth that size already powers itself on sunlight with 100× margin (Part F). What it needs is our demand to scale down with it.
+- **Autonomy:** onboard power + a few bits of logic + neighbour comms. *Needs:* **energy per useful operation cut by orders of magnitude.** Not per switch — we're already at ATP parity there — but per *instruction*: stop spending thousands of switches on what a molecular machine does in one chemical event.
+- **Actuation:** *Needs:* **transduction efficiency.** Today's sub-mm robots burn their budget on ~10⁻⁴-efficient actuators; F1-ATPase runs near 100%. This is the single largest and most neglected gap in the whole spec — four orders of magnitude, sitting in plain sight.
+- **Count:** 10⁹–10¹². *Needs:* the communication-energy wall beaten — energy-proportional, mostly-silent, neighbour-only coordination. (Biology agrees: it whispers by diffusion, and it has no addressing either.)
+- **Reconfiguration:** arbitrary 3D shapes on command. *Needs:* distributed approximation — biology's hint is that you **never solve the NP-complete problem**; you run local rules until a shape falls out. But note biology only reaches *evolved* shapes, not arbitrary ones — "arbitrary" may be harder than "tiny" ever was.
+- **Open air:** *Needs:* the one I under-rated. Every biological reconfiguration mechanism requires liquid water, and life's air-tolerant state doesn't move or compute. **This now looks like the deepest barrier of the five.**
 
-Notice what that spec *is*: not a fantasy, but a **checklist of four named, actively-researched breakthroughs.** The dream didn't evaporate. It got itemized. And an itemized dream is one an engineer can actually chip away at — which is a far more exciting place to stand than "someday."
+Notice what that spec *is*: not a fantasy, and — after the correction — not a physics complaint either. It's a **checklist of engineering targets with addresses.** The dream didn't evaporate; it got itemized. And an itemized dream is one an engineer can chip away at, which is a far better place to stand than "physics forbids it" — especially when physics turned out not to.
 
 ---
 
 *Methodology note: the scores are the author's judgments on a deliberately utility-fog-faithful rubric; the weights are adjustable, and the ranking shifts with the target application — that's discovery #1, by design. The power-scaling figures in Part F are an order-of-magnitude illustration built on the primary ∝ L² surface-power relationship; the per-technology numbers are anchored to the primary sources below.*
+
+*Correction (2026-07-16): this article originally claimed that onboard autonomy is physically impossible below ~1 mm because harvested power scales as L². **That claim was wrong and has been retracted** — supply scales as L² but demand scales as L³, so the ratio improves as units shrink, and* Prochlorococcus *(0.6 µm, sunlight-powered, ~123× power margin) is a working counterexample. Part F now carries the original argument, the kill-test that destroyed it, and the corrected claim. The falsification is reproducible:* `scripts/biology_wall_falsification.py`. *Figure 2 has been redrawn; Figure 3 is unchanged but relabelled — it was always correct for engineered machines, and only the fixed-demand assumption was wrong. I've left the reversal visible rather than editing it away, because being publicly wrong in a checkable way is the whole point of writing the numbers down.*
 
 ### Sources
 - Rothemund — *Folding DNA to create nanoscale shapes and patterns*, **Nature 440:297 (2006)** (scaffolded origami; M13 scaffold).
@@ -216,9 +277,13 @@ Notice what that spec *is*: not a fantasy, but a **checklist of four named, acti
 - Yigit, Xie et al. — *Programmable magnetic colloidal swarms*, **Science Robotics 2019** (liquid/chain/vortex/ribbon modes, in fluid).
 - Tibbits — *4D printing* (MIT Self-Assembly Lab, 2013); shape-memory polymers, liquid-crystal elastomers, magnetic soft composites.
 - Michigan Micro Mote (~1 mm³ computer); Dutta — communication-energy relation (~1 bit ≈ 10⁵ CPU-ops).
-- *Surface-area-limited powering of small-scale modular robots*, **Science Robotics 2024** (the L² autonomy-vs-size relationship).
-- Microscale autonomous robots (~200 µm, light-harvested ~100 nW + onboard logic) — Cornell/Michigan, 2020–2023.
-- Power-scaling illustration (Part F): `scripts/power_scaling_wall.py` (order-of-magnitude, built on the ∝ L² relation).
+- *Surface-area-limited powering of small-scale modular robots*, **Science Robotics 2024** (the L² surface-power relationship).
+- Microscale autonomous robots (~200 µm, light-harvested, onboard logic) — Cornell/Michigan, 2020–2023; Reynolds et al., **Science Robotics 2022** (separate PV pairs for legs vs circuit; SEA transduction ~10⁻⁴, PV→SEA coupling ~1%).
+- **Falsification of the L² wall (Part F):** Milo & Phillips, *Cell Biology by the Numbers* — [power consumption of a cell](https://book.bionumbers.org/what-is-the-power-consumption-of-a-cell/) (E. coli ~1 pW, ~10⁷ ATP/s) · DeLong et al., **PNAS 2010** (unicellular metabolic scaling; surface area binds as cells get *bigger*) · Serbanescu et al., **FEBS J 2022** (uptake ∝ surface, demand ∝ volume).
+- ***Prochlorococcus*** — **MMBR 1999** (0.6 µm obligate photoautotroph, smallest photosynthetic organism) + **PLOS One** diel photophysiology (8.8 fg C/cell/hr).
+- **Phoenix processor** — Hanson et al., **JSSC 44(4) 2009** / VLSI 2008 (Blaauw & Sylvester): 226–297 nW active, 30–35 pW sleep, 2.8 pJ/cycle.
+- Landauer limit measured to within 44% of kT ln2 — **Science Advances 2016**. Kinesin: 1 ATP per 8-nm step (Schnitzer & Block, **Nature 1997**). F1-ATPase near-100% efficiency.
+- Scripts (reproducible): `scripts/power_scaling_wall.py` (the original L² illustration) · **`scripts/biology_wall_falsification.py` (the kill-test that overturned it)**.
 
 ---
 
