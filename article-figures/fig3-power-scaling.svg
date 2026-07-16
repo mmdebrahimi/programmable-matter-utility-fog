@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="490" viewBox="0 0 760 490" font-family="Helvetica,Arial,sans-serif">
+<rect width="760" height="490" fill="#ffffff"/>
+<text x="30" y="34" font-size="22" font-weight="700" fill="#111">Why autonomy dies below a millimetre</text>
+<text x="30" y="55" font-size="13" fill="#666">Harvested power scales as size² (L²); the power a working node needs does not. Where the line drops below a floor, self-power fails.</text>
+<line x1="120" y1="70" x2="120" y2="430" stroke="#333" stroke-width="1.5"/>
+<line x1="120" y1="430" x2="690" y2="430" stroke="#333" stroke-width="1.5"/>
+<line x1="120.0" y1="70" x2="120.0" y2="430" stroke="#eee"/>
+<text x="120.0" y="446" font-size="11" fill="#555" text-anchor="middle">1 cm</text>
+<line x1="262.5" y1="70" x2="262.5" y2="430" stroke="#eee"/>
+<text x="262.5" y="446" font-size="11" fill="#555" text-anchor="middle">1 mm</text>
+<line x1="405.0" y1="70" x2="405.0" y2="430" stroke="#eee"/>
+<text x="405.0" y="446" font-size="11" fill="#555" text-anchor="middle">100 µm</text>
+<line x1="547.5" y1="70" x2="547.5" y2="430" stroke="#eee"/>
+<text x="547.5" y="446" font-size="11" fill="#555" text-anchor="middle">10 µm</text>
+<line x1="690.0" y1="70" x2="690.0" y2="430" stroke="#eee"/>
+<text x="690.0" y="446" font-size="11" fill="#555" text-anchor="middle">1 µm</text>
+<text x="405" y="464" font-size="12" fill="#333" text-anchor="middle">unit size (smaller &#8594;)</text>
+<line x1="120" y1="70.0" x2="690" y2="70.0" stroke="#f2f2f2"/>
+<text x="112" y="74.0" font-size="11" fill="#555" text-anchor="end">100 mW</text>
+<line x1="120" y1="190.0" x2="690" y2="190.0" stroke="#f2f2f2"/>
+<text x="112" y="194.0" font-size="11" fill="#555" text-anchor="end">100 µW</text>
+<line x1="120" y1="310.0" x2="690" y2="310.0" stroke="#f2f2f2"/>
+<text x="112" y="314.0" font-size="11" fill="#555" text-anchor="end">100 nW</text>
+<line x1="120" y1="430.0" x2="690" y2="430.0" stroke="#f2f2f2"/>
+<text x="112" y="434.0" font-size="11" fill="#555" text-anchor="end">100 pW</text>
+<text x="34" y="250" font-size="12" fill="#333" text-anchor="middle" transform="rotate(-90 34 250)">harvested power (sunlight)</text>
+<line x1="120" y1="150.0" x2="690" y2="150.0" stroke="#e34a33" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="686" y="145.0" font-size="11" fill="#e34a33" text-anchor="end">active node ~1 mW</text>
+<line x1="120" y1="230.0" x2="690" y2="230.0" stroke="#fb8d3d" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="686" y="225.0" font-size="11" fill="#fb8d3d" text-anchor="end">low-power ~10 uW</text>
+<line x1="120" y1="310.0" x2="690" y2="310.0" stroke="#3182bd" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="686" y="305.0" font-size="11" fill="#3182bd" text-anchor="end">subthreshold ~100 nW</text>
+<polyline points="120.0,103.0 262.5,183.0 405.0,263.0 547.5,343.0 690.0,423.0" fill="none" stroke="#111" stroke-width="2.5"/>
+<text x="126.0" y="95.0" font-size="12" font-weight="700" fill="#111">P &#8733; L²</text>
+<circle cx="203.8" cy="150.0" r="4.5" fill="#e34a33"/>
+<text x="203.8" y="168.0" font-size="10" fill="#e34a33" text-anchor="middle">2.6 mm</text>
+<circle cx="346.3" cy="230.0" r="4.5" fill="#fb8d3d"/>
+<text x="346.3" y="248.0" font-size="10" fill="#fb8d3d" text-anchor="middle">0.26 mm</text>
+<circle cx="488.8" cy="310.0" r="4.5" fill="#3182bd"/>
+<text x="488.8" y="328.0" font-size="10" fill="#3182bd" text-anchor="middle">0.026 mm</text>
+<circle cx="120.0" cy="103.0" r="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="120.0" y="91.0" font-size="11" font-weight="700" fill="#111" text-anchor="middle">Kilobot</text>
+<circle cx="362.1" cy="238.9" r="6" fill="none" stroke="#111" stroke-width="2"/>
+<text x="362.1" y="226.9" font-size="11" font-weight="700" fill="#111" text-anchor="middle">Miskin robot</text>
+<text x="120" y="475" font-size="10.5" fill="#999">Order-of-magnitude illustration (sunlight PV). The L² relation is from Science Robotics 2024; the ~100 nW floor is the Miskin robot.</text>
+</svg>
